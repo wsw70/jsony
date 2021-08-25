@@ -1,6 +1,9 @@
 # jsony
 Simple package to read JSON data from a file
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/wsw70/jsony.svg)](https://pkg.go.dev/github.com/wsw70/jsony)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![GitHub branch checks state](https://img.shields.io/github/checks-status/wsw70/jsony/main)
 ## Why `jsony`
 
 Reading and writing JSON files requires lines and lines of the same code (reading, marshaling, `if err != nil` ...). It is time to simplify this by having a few helper functions for these common tasks.
