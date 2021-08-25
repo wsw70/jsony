@@ -5,6 +5,8 @@ Simple package to read JSON data from a file
 
 Reading and writing JSON files requires lines and lines of the same code (reading, marshaling, `if err != nil` ...). It is time to simplify this by having a few helper functions for these common tasks.
 
+The idea of `jsony` was inspired by [`resty`](https://github.com/go-resty/resty), a wonderful package which immensly simplifies HTTP calls ❤️. 
+
 ## Usage
 
 ### Importing
