@@ -44,4 +44,5 @@ func Write(data interface{}, filename string) error {
 	if err != nil {
 		return fmt.Errorf("%w: %v", ErrWritingFile, err)
 	}
+	return nil
 }
