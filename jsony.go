@@ -7,10 +7,10 @@ import (
 	"os"
 )
 
-var ErrReadingFile = errors.New("error reading file")
-var ErrWritingFile = errors.New("error writing file")
-var ErrIncorrectJson = errors.New("incorrect JSON")
-var ErrIncorrectStruct = errors.New("incorrect structure for JSON")
+var errReadingFile = errors.New("error reading file")
+var errWritingFile = errors.New("error writing file")
+var errIncorrectJson = errors.New("incorrect JSON")
+var errIncorrectStruct = errors.New("incorrect structure for JSON")
 
 // Read JSON data from a file (filename) and push it into the container (expectedStructure)
 func Read(filename string, expectedStructure interface{}) error {
@@ -19,17 +19,17 @@ func Read(filename string, expectedStructure interface{}) error {
 	// red in the file
 	fileContent, err := os.ReadFile(filename)
 	if err != nil {
-		return fmt.Errorf("%w: %v", ErrReadingFile, err)
+		return fmt.Errorf("%w: %v", errReadingFile, err)
 	}
 	// check for validity of the JSON data
 	ok := json.Valid(fileContent)
 	if !ok {
-		return fmt.Errorf("%w", ErrIncorrectJson)
+		return fmt.Errorf("%w", errIncorrectJson)
 	}
 	// unmarshal the data
 	err = json.Unmarshal(fileContent, expectedStructure)
 	if err != nil {
-		return fmt.Errorf("%w: %v", ErrIncorrectStruct, err)
+		return fmt.Errorf("%w: %v", errIncorrectStruct, err)
 	}
 
 	return nil
@@ -40,11 +40,11 @@ func Write(data interface{}, filename string) error {
 	var err error
 	jsonData, err := json.Marshal(data)
 	if err != nil {
-		return fmt.Errorf("%w: %v", ErrIncorrectStruct, err)
+		return fmt.Errorf("%w: %v", errIncorrectStruct, err)
 	}
 	err = os.WriteFile(filename, jsonData, 0600)
 	if err != nil {
-		return fmt.Errorf("%w: %v", ErrWritingFile, err)
+		return fmt.Errorf("%w: %v", errWritingFile, err)
 	}
 	return nil
 }

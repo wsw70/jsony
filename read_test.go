@@ -15,7 +15,7 @@ var incorrectStruct = struct {
 
 func TestNoFile(t *testing.T) {
 	err := Read("nonexistingfile.json", &correctStruct)
-	if !errors.Is(err, ErrReadingFile) {
+	if !errors.Is(err, errReadingFile) {
 		t.Errorf("inexisting file not detected: %v", err)
 	} else {
 		t.Logf("👍: %v", err)
@@ -24,7 +24,7 @@ func TestNoFile(t *testing.T) {
 
 func TestIncorrectJson(t *testing.T) {
 	err := Read("testJsonIncorrect.json", &correctStruct)
-	if !errors.Is(err, ErrIncorrectJson) {
+	if !errors.Is(err, errIncorrectJson) {
 		t.Errorf("incorrect JSON not detected: %v", err)
 	} else {
 		t.Logf("👍: %v", err)
@@ -33,7 +33,7 @@ func TestIncorrectJson(t *testing.T) {
 
 func TestCorrectJsonIncorrectStruct(t *testing.T) {
 	err := Read("testJsonCorrect.json", &incorrectStruct)
-	if !errors.Is(err, ErrIncorrectStruct) {
+	if !errors.Is(err, errIncorrectStruct) {
 		t.Errorf("incorrect struct not detected: %v", err)
 	} else {
 		t.Logf("👍: %v", err)
