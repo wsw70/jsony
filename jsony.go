@@ -11,7 +11,7 @@ var ErrReadingFile = errors.New("error reading file")
 var ErrIncorrectJson = errors.New("incorrect JSON")
 var ErrIncorrectStruct = errors.New("incorrect structure for JSON")
 
-func jsony(filename string, expectedStructure interface{}) error {
+func Jsony(filename string, expectedStructure interface{}) error {
 	// error common to all function
 	var err error
 	// red in the file

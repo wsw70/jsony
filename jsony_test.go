@@ -14,7 +14,7 @@ var incorrectStruct = struct {
 }{}
 
 func TestNoFile(t *testing.T) {
-	err := jsony("nonexistingfile.json", &correctStruct)
+	err := Jsony("nonexistingfile.json", &correctStruct)
 	if !errors.Is(err, ErrReadingFile) {
 		t.Errorf("inexisting file not detected: %v", err)
 	} else {
@@ -23,7 +23,7 @@ func TestNoFile(t *testing.T) {
 }
 
 func TestIncorrectJson(t *testing.T) {
-	err := jsony("testJsonIncorrect.json", &correctStruct)
+	err := Jsony("testJsonIncorrect.json", &correctStruct)
 	if !errors.Is(err, ErrIncorrectJson) {
 		t.Errorf("incorrect JSON not detected: %v", err)
 	} else {
@@ -32,7 +32,7 @@ func TestIncorrectJson(t *testing.T) {
 }
 
 func TestCorrectJsonIncorrectStruct(t *testing.T) {
-	err := jsony("testJsonCorrect.json", &incorrectStruct)
+	err := Jsony("testJsonCorrect.json", &incorrectStruct)
 	if !errors.Is(err, ErrIncorrectStruct) {
 		t.Errorf("incorrect struct not detected: %v", err)
 	} else {
@@ -41,11 +41,10 @@ func TestCorrectJsonIncorrectStruct(t *testing.T) {
 }
 
 func TestCorrectJsonCorrectStruct(t *testing.T) {
-	err := jsony("testJsonCorrect.json", &correctStruct)
+	err := Jsony("testJsonCorrect.json", &correctStruct)
 	if err != nil {
 		t.Errorf("there should be no error but there was one: %v", err)
 	} else {
 		t.Logf("👍: data parsed correctly")
 	}
 }
-
