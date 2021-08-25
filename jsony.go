@@ -12,6 +12,7 @@ var ErrWritingFile = errors.New("error writing file")
 var ErrIncorrectJson = errors.New("incorrect JSON")
 var ErrIncorrectStruct = errors.New("incorrect structure for JSON")
 
+// Read JSON data from a file (filename) and push it into the container (expectedStructure)
 func Read(filename string, expectedStructure interface{}) error {
 	// error common to all function
 	var err error
@@ -34,6 +35,7 @@ func Read(filename string, expectedStructure interface{}) error {
 	return nil
 }
 
+// Write JSON data into a file (filename)
 func Write(data interface{}, filename string) error {
 	var err error
 	jsonData, err := json.Marshal(data)
